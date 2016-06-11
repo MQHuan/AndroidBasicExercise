@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">AndroidBaseExecrcise</string>
+    <string name="action_settings">Settings</string>
+    <string name="code">code</string>
+</resources>
