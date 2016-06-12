@@ -21,7 +21,7 @@ public class SourceCodeActivity extends Activity {
     }
 
     private void loadContent() {
-        String code = getIntent().getStringExtra(DemoBaseActivity.CONTENT_TAG);
+        String code = getIntent().getStringExtra(ShowDemoCodeBaseActivity.CONTENT_TAG);
         DemoUtils.loadCodeAtWebView(this, code, webView);
     }
 }

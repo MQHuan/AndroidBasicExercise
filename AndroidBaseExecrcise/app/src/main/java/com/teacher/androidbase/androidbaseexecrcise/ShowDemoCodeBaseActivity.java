@@ -3,6 +3,7 @@ package com.teacher.androidbase.androidbaseexecrcise;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -22,7 +23,7 @@ import butterknife.ButterKnife;
 /**
  * Created by Administrator on 2016/6/10.
  */
-public class ShowDemoCodeBaseActivity extends Activity {
+public class ShowDemoCodeBaseActivity extends AppCompatActivity {
     static public final String CONTENT_TAG = "content";
     public static final String METHOD_TAG = "method";
     public static final String TAG_DEMO = "Demo";

@@ -20,6 +20,8 @@ public class MainViewHolder extends RecyclerView.ViewHolder implements View.OnCl
         mText = (TextView) itemView.findViewById(R.id.main_title);
         this.mMainOnClickListener = mainOnClickListener;
         this.mMainOnLongClickListener = mainOnLongClickListener;
+        itemView.setOnClickListener(this);
+        itemView.setOnLongClickListener(this);
     }
 
     @Override

@@ -11,6 +11,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Toast;
 
 import com.teacher.androidbase.androidbaseexecrcise.adapter.MainAdapter;
 import com.teacher.androidbase.androidbaseexecrcise.adapter.MainViewHolder;
@@ -29,6 +30,7 @@ public class MainActivity extends AppCompatActivity implements MainViewHolder.Ma
     RecyclerView mRecyclerView;
 
     public List<String> mDemoArray;
+    public MainAdapter mMainAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,11 +52,12 @@ public class MainActivity extends AppCompatActivity implements MainViewHolder.Ma
         mDemoArray = myDemoArray();
 
         mRecyclerView = (RecyclerView) findViewById(R.id.main_recycler_view);
-        MainAdapter mainAdapter = new MainAdapter(myDemoArray());
-        mRecyclerView.setAdapter(mainAdapter);
+        mMainAdapter = new MainAdapter(myDemoArray());
+        mMainAdapter.setMainOnClickListener(this);
+        mMainAdapter.setMainOnLongClickListener(this);
+        mRecyclerView.setAdapter(mMainAdapter);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
-        mainAdapter.setMainOnClickListener(this);
-        mainAdapter.setMainOnLongClickListener(this);
+
     }
 
     @Override
@@ -99,6 +102,7 @@ public class MainActivity extends AppCompatActivity implements MainViewHolder.Ma
 
     @Override
     public void onItemClick(View view, int position) {
+        Toast.makeText(this, "onItemClick", Toast.LENGTH_LONG).show();
         Intent intent = new Intent(this, DemoListActivity.class);
         intent.putExtra(DEMO_DAY, mDemoArray.get(position));
         startActivity(intent);

@@ -1,5 +1,6 @@
 package com.teacher.androidbase.androidbaseexecrcise;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -14,6 +15,7 @@ import android.widget.Switch;
 
 import com.teacher.androidbase.androidbaseexecrcise.adapter.MainAdapter;
 import com.teacher.androidbase.androidbaseexecrcise.adapter.MainViewHolder;
+import com.teacher.androidbase.androidbaseexecrcise.day01.CallDarling;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -31,6 +33,7 @@ public class DemoListActivity extends AppCompatActivity implements MainViewHolde
 
     public MainAdapter mMainAdapter;
     public List<String> mDemoArray;
+    public String mDay;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,8 +52,9 @@ public class DemoListActivity extends AppCompatActivity implements MainViewHolde
         });
         mRecyclerView = (RecyclerView) findViewById(R.id.main_recycler_view);
 
-        String day = getIntent().getStringExtra(MainActivity.DEMO_DAY);
-        mDemoArray = myDemoArray(day);
+
+        mDay = getIntent().getStringExtra(MainActivity.DEMO_DAY);
+        mDemoArray = myDemoArray(mDay);
         mMainAdapter = new MainAdapter(mDemoArray);
 
         mRecyclerView.setAdapter(mMainAdapter);
@@ -86,7 +90,7 @@ public class DemoListActivity extends AppCompatActivity implements MainViewHolde
         ArrayList<String> array = new ArrayList<>();
         switch(day) {
             case "FirstDay":
-                array = firstDayDemo();
+                array = firstDayDemoName();
                 break;
             case "SecondsDay":
                 break;
@@ -119,15 +123,43 @@ public class DemoListActivity extends AppCompatActivity implements MainViewHolde
         return array;
     }
 
-    private ArrayList<String> firstDayDemo() {
+    private ArrayList<String> firstDayDemoName() {
         ArrayList<String> array = new ArrayList<>();
-        array.add("call same one");
+        array.add("CallDarling");
         return array;
     }
 
     @Override
     public void onItemClick(View view, int position) {
-        //// TODO: 2016/6/12 start demo activity 
+        //// TODO: 2016/6/12 start demo activity
+        switch(mDay) {
+            case "FirstDay":
+                firstDayDemo(view, position);
+                break;
+            case "SecondsDay":
+                break;
+            case "ThirdDay":
+                break;
+            case "FourthDay":
+                break;
+            case "FifthDay":
+                break;
+            case "SixthDay":
+                break;
+            case "SeventhDay":
+                break;
+            case "EighthDay":
+                break;
+        }
+    }
+
+    private void firstDayDemo(View view, int position) {
+        List<String> demoArray = firstDayDemoName();
+        switch (position) {
+            case 0:
+            startActivity(new Intent(this, CallDarling.class));
+                break;
+        }
     }
 
     @Override
