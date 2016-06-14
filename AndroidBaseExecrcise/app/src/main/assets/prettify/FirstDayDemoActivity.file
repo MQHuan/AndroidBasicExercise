@@ -1,0 +1,12 @@
+package com.teacher.javabase.javabaseexercise.demo;
+
+import android.util.Log;
+
+/**
+ * Created by Administrator on 2016/4/4.
+ */
+public class FirstDayDemoActivity extends BaseDemoActivity{
+    public void testShowObject(){
+        Log.d("Test", "testShowInHtml");
+    }
+}

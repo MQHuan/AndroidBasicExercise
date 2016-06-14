@@ -11,11 +11,10 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Switch;
 
 import com.teacher.androidbase.androidbaseexecrcise.adapter.MainAdapter;
 import com.teacher.androidbase.androidbaseexecrcise.adapter.MainViewHolder;
-import com.teacher.androidbase.androidbaseexecrcise.day01.CallDarling;
+import com.teacher.androidbase.androidbaseexecrcise.demo.day01.CallDarling;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -4,6 +4,7 @@ import android.annotation.TargetApi;
 import android.content.Context;
 import android.os.Build;
 import android.text.Html;
+import android.util.Log;
 import android.webkit.WebView;
 
 import java.io.ByteArrayOutputStream;
@@ -22,7 +23,8 @@ public class DemoUtils {
         String templace = null;
         try {
             inputStream = context.getAssets().open("index.html");
-            readTextFile(inputStream);
+            templace = readTextFile(inputStream);
+            Log.d("DemoUtils", "test : "+templace + "code : "+code);
             templace = templace.replace("__CODE__", Html.escapeHtml(code));
         } catch (IOException e) {
             e.printStackTrace();

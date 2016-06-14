@@ -25,7 +25,7 @@
         <activity android:name=".SourceCodeActivity"/>
 
         <!--day01-->
-        <activity android:name=".day01.CallDarling"/>
+        <activity android:name=".demo.day01.CallDarling"/>
         <!--day01 end-->
     </application>
 
