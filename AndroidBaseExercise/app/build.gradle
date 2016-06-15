@@ -1,0 +1,86 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 23
+    buildToolsVersion "23.0.3"
+
+    defaultConfig {
+        applicationId "com.teacher.androidbase.androidbaseexecrcise"
+        minSdkVersion 15
+        targetSdkVersion 23
+        versionCode 1
+        versionName "1.0"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    packagingOptions {
+        exclude 'META-INF/LICENSE.txt'
+        exclude 'META-INF/NOTICE.txt'
+    }
+
+    lintOptions {
+        abortOnError false
+    }
+
+    sourceSets {
+        main {
+            java {
+                exclude 'src/main/assets'
+            }
+        }
+    }
+}
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    testCompile 'junit:junit:4.12'
+    compile 'com.android.support:appcompat-v7:23.3.0'
+    compile 'com.android.support:design:23.3.0'
+    compile 'com.android.support:cardview-v7:23.3.0'
+    compile 'com.jakewharton:butterknife:8.0.1'
+}
+
+task renameFile {
+
+//
+//    doLast {
+//        file('src/main/assets/FileDemoActivity.java').renameTo(file('src/main/assets/FileDemoActivity'));
+//    }
+
+
+    File assetsDir = file 'src/main/assets';
+    FileCollection collection = files { assetsDir.listFiles() }
+    collection.each {
+        if (it.name.indexOf('java') > 0) {
+            def name = it.name.substring(0, it.name.indexOf('.'))
+            def newFile = 'src/main/assets/' + name;
+            file(it).renameTo(file(newFile))
+        }
+    }
+}
+
+
+task copySource(type: Copy) {
+//    File demoDir = file 'src/main/java/com/example/avoscloud_demo/demo';
+//    FileCollection collection = files { demoDir.listFiles() }
+//    collection.collect {
+//        def name = it.name.substring(0, it.name.indexOf('.'));
+//        println name
+//        from it
+//        into 'src/main/assets/'
+//
+//    }
+
+    from 'src/main/java/com/teacher/androidbase/androidbaseexecrcise/demo'
+    into 'src/main/assets'
+    rename { String fileName ->
+        fileName.replace('java', 'file')
+    }
+
+}
+
+preBuild.dependsOn copySource
